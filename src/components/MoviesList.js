@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Fade } from 'react-reveal';
 import styled from 'styled-components'
 
@@ -7,12 +7,12 @@ function MoviesList({ movies, setIdPass, setMovies, setSearch }) {
     return (
         <Container>
             <List>
-                {movies != undefined ?
+                {movies !== undefined ?
                     movies?.map((movie) => (
                         <ListItem key={movie.imdbID} onClick={() => setIdPass(movie.imdbID)}>
                             <Fade left>
                                 <Image>
-                                    <img src={movie.Poster == "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
+                                    <img src={movie.Poster === "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
                                 </Image>
                             </Fade>
                             <Fade top>

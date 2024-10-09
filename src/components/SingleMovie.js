@@ -28,11 +28,10 @@ function SingleMovie({ idPass, setIdPass }) {
         <Container>
             <MovieContainer>
                 {loading ? (
-                    <img src='/loading.gif' />
+                    <img src='/loading.gif' alt='loading...' />
                 ) : (
                     <>
                         <BackButton onClick={() => (setSingleMovie([]), setIdPass(""))}>←</BackButton>
-
                         <MoviePoster>
                             <Fade top>
                                 <img
@@ -59,7 +58,12 @@ function SingleMovie({ idPass, setIdPass }) {
                 poster={singleMovie.Poster}
             /> */}
 
-            <MovieDescription plot={singleMovie.Plot} actors={singleMovie.Actors} director={singleMovie.Director} loading={loading} />
+            <MovieDescription plot={singleMovie.Plot} actors={singleMovie.Actors} director={singleMovie.Director} loading={loading} title={singleMovie.Title}
+                runtime={singleMovie.Runtime}
+                imdbRating={singleMovie.imdbRating}
+                poster={singleMovie.Poster}
+                id={idPass}
+            />
         </Container>
     );
 }

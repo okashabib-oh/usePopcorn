@@ -1,14 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Watched() {
+function Watched({ moviesCount }) {
+
     return (
         <Container>
             <h4>Movies You Watched</h4>
             <WatchInfo>
                 <div>
                     <span>#️⃣</span>
-                    0 Movies
+                    {moviesCount} Movies
                 </div>
                 <div>
                     <span>⭐️</span>

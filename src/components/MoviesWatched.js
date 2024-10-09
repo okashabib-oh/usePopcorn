@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Watched from './Watched'
 import SingleMovie from './SingleMovie'
+import History from './History'
 
 function MoviesWatched({ idPass, setIdPass }) {
+
+    const [moviesCount, setMoviesCount] = useState(0)
+    const [watchedMovies, setWatchedMovies] = useState([])
+
+    useEffect(() => {
+        const watched = JSON.parse(localStorage.getItem('watched'))
+        setMoviesCount(watched.length)
+    }, [moviesCount, watchedMovies])
+
     return (
         <Container>
-            <Watched />
+            <Watched moviesCount={moviesCount} setMoviesCount={setMoviesCount} />
+            <History watchedMovies={watchedMovies} setWatchedMovies={setWatchedMovies} />
             <SingleMovie idPass={idPass} setIdPass={setIdPass} />
         </Container>
     )
