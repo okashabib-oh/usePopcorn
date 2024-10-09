@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { Fade } from 'react-reveal';
 import styled from 'styled-components'
 
-function MoviesList({ movies, setIdPass }) {
+function MoviesList({ movies, setIdPass, setMovies }) {
 
     return (
         <Container>
@@ -9,13 +10,17 @@ function MoviesList({ movies, setIdPass }) {
                 {movies != undefined ?
                     movies?.map((movie) => (
                         <ListItem key={movie.imdbID} onClick={() => setIdPass(movie.imdbID)}>
-                            <Image>
-                                <img src={movie.Poster == "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
-                            </Image>
-                            <MovieInfo>
-                                <h4>{movie.Title}</h4>
-                                <p>🗓 {movie.Year}</p>
-                            </MovieInfo>
+                            <Fade left>
+                                <Image>
+                                    <img src={movie.Poster == "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
+                                </Image>
+                            </Fade>
+                            <Fade top>
+                                <MovieInfo>
+                                    <h4>{movie.Title}</h4>
+                                    <p>🗓 {movie.Year}</p>
+                                </MovieInfo>
+                            </Fade>
                         </ListItem>
                     )) : (
                         <p className='notFound'>Movies Not Found</p>
@@ -23,7 +28,7 @@ function MoviesList({ movies, setIdPass }) {
             </List>
             {movies?.length > 0 ? (
                 <ButtonRemove>
-                    <button>-</button>
+                    <button onClick={() => setMovies([])}>-</button>
                 </ButtonRemove>
             ) : (
                 <p></p>
@@ -43,7 +48,6 @@ const Container = styled.div`
     padding: 10px;
     position: relative;
     height: 100vh;
-    overflow-y: auto;
 `;
 
 const List = styled.ul`

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MovieDetail from './MovieDetail';
 import StarRatings from './StarRatings';
 import MovieDescription from './MovieDescription';
+import { Fade } from 'react-reveal';
 
 function SingleMovie({ idPass, setIdPass }) {
     const [singleMovie, setSingleMovie] = useState([]);
@@ -15,7 +16,6 @@ function SingleMovie({ idPass, setIdPass }) {
             const data = await response.json();
             setSingleMovie(data);
             setLoading(false);
-            console.log(data);
         }
         fetchSingleMovie();
     }, [idPass]);
@@ -34,22 +34,30 @@ function SingleMovie({ idPass, setIdPass }) {
                         <BackButton onClick={() => (setSingleMovie([]), setIdPass(""))}>←</BackButton>
 
                         <MoviePoster>
-                            <img
-                                src={singleMovie.Poster === 'N/A' ? '/download.jpeg' : singleMovie.Poster}
-                                alt={singleMovie.Title}
-                            />
+                            <Fade top>
+                                <img
+                                    src={singleMovie.Poster === 'N/A' ? '/download.jpeg' : singleMovie.Poster}
+                                    alt={singleMovie.Title}
+                                />
+                            </Fade>
                         </MoviePoster>
-
-                        <MovieDetail title={singleMovie.Title}
-                            released={singleMovie.Released}
-                            runtime={singleMovie.Runtime}
-                            genre={singleMovie.Genre}
-                            imdbRating={singleMovie.imdbRating}
-                        />
+                        <Fade right>
+                            <MovieDetail title={singleMovie.Title}
+                                released={singleMovie.Released}
+                                runtime={singleMovie.Runtime}
+                                genre={singleMovie.Genre}
+                                imdbRating={singleMovie.imdbRating}
+                            />
+                        </Fade>
                     </>
                 )}
             </MovieContainer>
-            {/* <StarRatings /> */}
+            {/* <StarRatings id={idPass} title={singleMovie.Title}
+                runtime={singleMovie.Runtime}
+                genre={singleMovie.Genre}
+                imdbRating={singleMovie.imdbRating}
+                poster={singleMovie.Poster}
+            /> */}
 
             <MovieDescription plot={singleMovie.Plot} actors={singleMovie.Actors} director={singleMovie.Director} loading={loading} />
         </Container>

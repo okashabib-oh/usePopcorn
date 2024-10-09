@@ -1,4 +1,5 @@
 import React from 'react'
+import { Fade } from 'react-reveal'
 import styled from 'styled-components'
 
 function MovieDescription({ plot, actors, director, loading }) {
@@ -8,9 +9,15 @@ function MovieDescription({ plot, actors, director, loading }) {
                 <img src='/loading.gif' />
             ) : (
                 <>
-                    <p>Plot: {plot}</p>
-                    <p>Actors: {actors}</p>
-                    <p>Directed by {director}</p>
+                    <Fade top>
+                        <p>Plot: {plot}</p>
+                    </Fade>
+                    <Fade left>
+                        <p>Actors: {actors}</p>
+                    </Fade>
+                    <Fade bottom>
+                        <p>Directed by {director}</p>
+                    </Fade>
                 </>
             )}
         </Container>

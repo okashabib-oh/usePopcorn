@@ -30,10 +30,9 @@ function Watched() {
 export default Watched
 
 const Container = styled.div`
-    border-radius: 16px;
+    border-radius: 0 0 16px 16px;
     background-color: #343A40;
     padding: 10px;
-    margin: 6px 0;
     text-align: center;
 
     h4 {

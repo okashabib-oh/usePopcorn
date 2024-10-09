@@ -4,10 +4,12 @@ import styled from 'styled-components'
 function NavBar({ search, setSearch, movies }) {
     return (
         <Container>
-            <Logo>
-                <span style={{ fontSize: '30px' }}>🍿</span>
-                <h1>usePopcorn</h1>
-            </Logo>
+            <a href='/'>
+                <Logo>
+                    <span style={{ fontSize: '30px' }}>🍿</span>
+                    <h1>usePopcorn</h1>
+                </Logo>
+            </a>
 
             <SearchBox>
                 <input type="search" placeholder='Search movies..'
@@ -16,7 +18,7 @@ function NavBar({ search, setSearch, movies }) {
             </SearchBox>
 
             <Results>
-                <p>Found 0 results</p>
+                <p>Found {movies?.length || 0} results</p>
             </Results>
         </Container>
     )
@@ -33,6 +35,11 @@ const Container = styled.div`
     border-radius: 12px;
     margin: 20px;
     padding: 0 32px;
+
+    a{
+        text-decoration: none;
+        color: #f9f9f9;
+    }
 `
 const Logo = styled.div`
     display: flex;

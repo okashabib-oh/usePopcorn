@@ -18,7 +18,6 @@ function App() {
     );
     const data = await response.json()
     setMovies(data.Search)
-    console.log(data);
   }
 
   useEffect(() => {
@@ -32,7 +31,7 @@ function App() {
     <div>
       <NavBar search={search} setSearch={setSearch} movies={movies} />
       <div className='movies'>
-        <MoviesList movies={movies} setIdPass={setIdPass} />
+        <MoviesList movies={movies} setMovies={setMovies} setIdPass={setIdPass} />
         <MoviesWatched idPass={idPass} setIdPass={setIdPass} />
       </div>
     </div>
