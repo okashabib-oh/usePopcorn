@@ -14,6 +14,7 @@ function NavBar({ search, setSearch, movies }) {
             <SearchBox>
                 <input type="search" placeholder='Search movies..'
                     onInput={(e) => setSearch(e.target.value)}
+                    value={search}
                 />
             </SearchBox>
 

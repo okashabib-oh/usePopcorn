@@ -34,6 +34,7 @@ const Container = styled.div`
     background-color: #343A40;
     padding: 10px;
     text-align: center;
+    overflow-x: auto;
 
     h4 {
         text-decoration: underline;

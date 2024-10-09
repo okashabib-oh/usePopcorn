@@ -31,7 +31,7 @@ function App() {
     <div>
       <NavBar search={search} setSearch={setSearch} movies={movies} />
       <div className='movies'>
-        <MoviesList movies={movies} setMovies={setMovies} setIdPass={setIdPass} />
+        <MoviesList movies={movies} setMovies={setMovies} setIdPass={setIdPass} setSearch={setSearch} />
         <MoviesWatched idPass={idPass} setIdPass={setIdPass} />
       </div>
     </div>

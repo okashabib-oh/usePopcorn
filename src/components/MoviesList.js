@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Fade } from 'react-reveal';
 import styled from 'styled-components'
 
-function MoviesList({ movies, setIdPass, setMovies }) {
+function MoviesList({ movies, setIdPass, setMovies, setSearch }) {
 
     return (
         <Container>
@@ -28,7 +28,7 @@ function MoviesList({ movies, setIdPass, setMovies }) {
             </List>
             {movies?.length > 0 ? (
                 <ButtonRemove>
-                    <button onClick={() => setMovies([])}>-</button>
+                    <button onClick={() => (setMovies([]), setSearch(""))}>-</button>
                 </ButtonRemove>
             ) : (
                 <p></p>
