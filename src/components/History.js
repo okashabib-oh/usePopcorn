@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-function History({ watchedMovies, setWatchedMovies }) {
+function History({ watchedMovies, setWatchedMovies, isWatched }) {
 
     useEffect(() => {
-        const history = JSON.parse(localStorage.getItem("watched"))
+        const history = JSON.parse(localStorage.getItem("watched")) || [];
         setWatchedMovies(history)
-    }, [])
+    }, [isWatched])
 
     const deleteWatched = (index) => {
         watchedMovies.splice(index, 1)

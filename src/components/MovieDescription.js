@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Fade } from 'react-reveal'
 import styled from 'styled-components'
 
-function MovieDescription({ plot, actors, director, title, imdbRating, runtime, poster, id, loading }) {
-
-    const [isWatched, setIsWatched] = useState(false)
+function MovieDescription({ plot, actors, director, title, imdbRating, runtime, poster, id, loading, isWatched, setIsWatched }) {
 
     const handleAdd = () => {
         const watched = JSON.parse(localStorage.getItem('watched')) || [];

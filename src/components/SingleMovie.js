@@ -5,7 +5,7 @@ import StarRatings from './StarRatings';
 import MovieDescription from './MovieDescription';
 import { Fade } from 'react-reveal';
 
-function SingleMovie({ idPass, setIdPass }) {
+function SingleMovie({ idPass, setIdPass, isWatched, setIsWatched }) {
     const [singleMovie, setSingleMovie] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -63,6 +63,8 @@ function SingleMovie({ idPass, setIdPass }) {
                 imdbRating={singleMovie.imdbRating}
                 poster={singleMovie.Poster}
                 id={idPass}
+                isWatched={isWatched}
+                setIsWatched={setIsWatched}
             />
         </Container>
     );

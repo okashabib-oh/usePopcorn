@@ -8,17 +8,18 @@ function MoviesWatched({ idPass, setIdPass }) {
 
     const [moviesCount, setMoviesCount] = useState(0)
     const [watchedMovies, setWatchedMovies] = useState([])
+    const [isWatched, setIsWatched] = useState(false)
 
     useEffect(() => {
-        const watched = JSON.parse(localStorage.getItem('watched'))
+        const watched = JSON.parse(localStorage.getItem('watched')) || []
         setMoviesCount(watched.length)
     }, [moviesCount, watchedMovies])
 
     return (
         <Container>
             <Watched moviesCount={moviesCount} setMoviesCount={setMoviesCount} />
-            <History watchedMovies={watchedMovies} setWatchedMovies={setWatchedMovies} />
-            <SingleMovie idPass={idPass} setIdPass={setIdPass} />
+            <History watchedMovies={watchedMovies} setWatchedMovies={setWatchedMovies} isWatched={isWatched} />
+            <SingleMovie idPass={idPass} setIdPass={setIdPass} isWatched={isWatched} setIsWatched={setIsWatched} />
         </Container>
     )
 }
