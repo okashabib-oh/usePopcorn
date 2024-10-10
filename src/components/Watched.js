@@ -13,7 +13,7 @@ function Watched({ moviesCount, ratingsCount, runtime }) {
                 </div>
                 <div>
                     <span>⭐️</span>
-                    {ratingsCount || 0.00}
+                    {ratingsCount.toFixed(1) || 0.00}
                 </div>
                 <div>
                     <span>🌟</span>

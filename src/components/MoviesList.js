@@ -9,19 +9,22 @@ function MoviesList({ movies, setIdPass, setMovies, setSearch }) {
             <List>
                 {movies !== undefined ?
                     movies?.map((movie) => (
-                        <ListItem key={movie.imdbID} onClick={() => setIdPass(movie.imdbID)}>
-                            <Fade left>
-                                <Image>
-                                    <img src={movie.Poster === "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
-                                </Image>
-                            </Fade>
-                            <Fade top>
-                                <MovieInfo>
-                                    <h4>{movie.Title}</h4>
-                                    <p>🗓 {movie.Year}</p>
-                                </MovieInfo>
-                            </Fade>
-                        </ListItem>
+                        <>
+                            <ListItem key={movie.imdbID} onClick={() => setIdPass(movie.imdbID)}>
+                                <Fade left>
+                                    <Image>
+                                        <img src={movie.Poster === "N/A" ? "/download.jpeg" : movie.Poster} alt={movie.Title} />
+                                    </Image>
+                                </Fade>
+                                <Fade top>
+                                    <MovieInfo>
+                                        <h4>{movie.Title}</h4>
+                                        <p>🗓 {movie.Year}</p>
+                                    </MovieInfo>
+                                </Fade>
+                            </ListItem>
+                            <hr />
+                        </>
                     )) : (
                         <p className='notFound'>Movies Not Found</p>
                     )}
@@ -59,19 +62,13 @@ const List = styled.ul`
 const ListItem = styled.li`
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     transition: background-color 250ms;
     cursor: pointer;
 
     &:hover {
         background-color: #343a40;
         border-radius: 8px;
-    }
-
-    hr {
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid #555;
     }
 `;
 
@@ -94,6 +91,14 @@ const MovieInfo = styled.div`
     h4 {
         font-size: 16px;
         margin: 0 0 5px 0;
+
+        @media (max-width: 768px){
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 0.7rem;
+        }
     }
 
     p {

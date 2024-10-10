@@ -22,7 +22,7 @@ function History({ watchedMovies, setWatchedMovies, isWatched }) {
                     <Fade top>
                         <Wrapper>
                             <Poster>
-                                <img src={movies.poster} alt="Poster" />
+                                <img src={movies.poster == "N/A" ? "/download.jpeg" : movies.poster} alt="Poster" />
                             </Poster>
                             <Info>
                                 <h2>{movies.title}</h2>
