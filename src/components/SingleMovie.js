@@ -65,6 +65,7 @@ function SingleMovie({ idPass, setIdPass, isWatched, setIsWatched }) {
                 id={idPass}
                 isWatched={isWatched}
                 setIsWatched={setIsWatched}
+                setSingleMovie={setSingleMovie}
             />
         </Container>
     );

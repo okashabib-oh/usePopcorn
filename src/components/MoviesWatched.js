@@ -9,15 +9,31 @@ function MoviesWatched({ idPass, setIdPass }) {
     const [moviesCount, setMoviesCount] = useState(0)
     const [watchedMovies, setWatchedMovies] = useState([])
     const [isWatched, setIsWatched] = useState(false)
+    const [ratingsCount, setRatingsCount] = useState(0)
+    const [runtime, setRunTime] = useState(0)
 
     useEffect(() => {
         const watched = JSON.parse(localStorage.getItem('watched')) || []
         setMoviesCount(watched.length)
-    }, [moviesCount, watchedMovies])
+
+        const totalRating = watched.reduce((acc, movies) => {
+            const rating = parseFloat(movies.imdbRating)
+            return movies.imdbRating !== "N/A" && !isNaN(rating) ? acc + rating : acc
+        }, 0)
+        setRatingsCount(totalRating)
+
+        const totalRuntime = watched.reduce((acc, movies) => {
+            const rep = movies.runtime
+            const result = rep.replace(" min", "")
+            return result !== "N/A" && !isNaN(result) ? acc + parseInt(result) : acc
+        }, 0)
+        setRunTime(totalRuntime)
+
+    }, [watchedMovies])
 
     return (
         <Container>
-            <Watched moviesCount={moviesCount} setMoviesCount={setMoviesCount} />
+            <Watched moviesCount={moviesCount} ratingsCount={ratingsCount} runtime={runtime} />
             <History watchedMovies={watchedMovies} setWatchedMovies={setWatchedMovies} isWatched={isWatched} />
             <SingleMovie idPass={idPass} setIdPass={setIdPass} isWatched={isWatched} setIsWatched={setIsWatched} />
         </Container>

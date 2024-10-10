@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Fade } from 'react-reveal';
 import styled from 'styled-components';
 
 function History({ watchedMovies, setWatchedMovies, isWatched }) {
@@ -18,21 +19,25 @@ function History({ watchedMovies, setWatchedMovies, isWatched }) {
         <Container>
             {watchedMovies?.map((movies, index) => (
                 <div key={index}>
-                    <Wrapper>
-                        <Poster>
-                            <img src={movies.poster} alt="Poster" />
-                        </Poster>
-                        <Info>
-                            <h2>{movies.title}</h2>
-                            <Ratings>
-                                <span>⭐️ {movies.imdbRating}</span>
-                                <span>🌟 10</span>
-                                <span>⏳ {movies.runtime}</span>
-                                <button className='delete' onClick={() => deleteWatched(index)}>x</button>
-                            </Ratings>
-                        </Info>
-                    </Wrapper>
-                    <Divider />
+                    <Fade top>
+                        <Wrapper>
+                            <Poster>
+                                <img src={movies.poster} alt="Poster" />
+                            </Poster>
+                            <Info>
+                                <h2>{movies.title}</h2>
+                                <Ratings>
+                                    <span>⭐️ {movies.imdbRating}</span>
+                                    <span>🌟 10</span>
+                                    <span>⏳ {movies.runtime}</span>
+                                    <button className='delete' onClick={() => deleteWatched(index)}>x</button>
+                                </Ratings>
+                            </Info>
+                        </Wrapper>
+                    </Fade>
+                    <Fade left>
+                        <Divider />
+                    </Fade>
                 </div>
             ))}
         </Container>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Watched({ moviesCount }) {
+function Watched({ moviesCount, ratingsCount, runtime }) {
 
     return (
         <Container>
@@ -13,7 +13,7 @@ function Watched({ moviesCount }) {
                 </div>
                 <div>
                     <span>⭐️</span>
-                    0.00
+                    {ratingsCount || 0.00}
                 </div>
                 <div>
                     <span>🌟</span>
@@ -21,7 +21,7 @@ function Watched({ moviesCount }) {
                 </div>
                 <div>
                     <span>⏳</span>
-                    0 min
+                    {runtime} min
                 </div>
             </WatchInfo>
         </Container>
