@@ -49,6 +49,7 @@ const Container = styled.div`
     max-height: 80vh;
     color: #f9f9f9;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
-
-`
+`;

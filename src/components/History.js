@@ -30,7 +30,7 @@ function History({ watchedMovies, setWatchedMovies, isWatched }) {
                                     <span>⭐️ {movies.imdbRating}</span>
                                     <span>🌟 10</span>
                                     <span>⏳ {movies.runtime}</span>
-                                    <button className='delete' onClick={() => deleteWatched(index)}>x</button>
+                                    <button title='Delete' className='delete' onClick={() => deleteWatched(index)}>x</button>
                                 </Ratings>
                             </Info>
                         </Wrapper>
@@ -48,20 +48,28 @@ export default History;
 
 const Container = styled.div`
     width: 90%;
-    padding: 20px;
     overflow-y: auto;
+    margin: 0 auto;
 `;
 
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 10px;
     padding: 15px;
     background-color: #343A40;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 250ms;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px;
+        gap: 10px;
+    }
 `;
 
 const Poster = styled.div`
@@ -70,6 +78,11 @@ const Poster = styled.div`
         height: 70px;
         object-fit: cover;
         border-radius: 8px;
+
+        @media (max-width: 768px) {
+            width: 50px;
+            height: 50px;
+        }
     }
 `;
 
@@ -81,6 +94,20 @@ const Info = styled.div`
         margin: 0;
         font-size: 18px;
         color: #fefefe;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `;
 
@@ -88,6 +115,7 @@ const Ratings = styled.div`
     display: flex;
     gap: 10px;
     font-size: 14px;
+    justify-content: flex-start;
 
     span {
         display: flex;
@@ -105,11 +133,23 @@ const Ratings = styled.div`
         font-weight: bold;
         width: 20px;
         height: 20px;
-        margin-left: auto;
-        
-        &:hover{
+
+        &:hover {
             background-color: #ff1616;
         }
+
+        @media (max-width: 768px) {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 10px;
     }
 `;
 

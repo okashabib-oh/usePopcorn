@@ -41,13 +41,28 @@ const Container = styled.div`
         text-decoration: none;
         color: #f9f9f9;
     }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 15px;
+    }
 `
 const Logo = styled.div`
     display: flex;
     align-items: center;
+
+    h1 {
+        margin-left: 8px;
+        font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 20px;
+        }
+    }
 `
 const SearchBox = styled.div`
-
     input{
         background-color: #7950f2;
         border: none;
@@ -69,7 +84,19 @@ const SearchBox = styled.div`
         outline: none;
         box-shadow: #0000003d 0 3px 8px;
     }
+
+    @media (max-width: 768px) {
+        input {
+            width: 100%;
+        }
+    }
 `
 const Results = styled.div`
     color: #dee2e6;
+
+    @media (max-width: 768px) {
+        p {
+            font-size: 14px;
+        }
+    }
 `
